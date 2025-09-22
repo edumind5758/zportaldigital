@@ -3,245 +3,238 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kelas Digital - Portal Pembelajaran</title>
+    <title>Z-Digital - Platform Belajar Interaktif</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
-        
+        /* Custom styling untuk tampilan mobile */
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
         }
         
-        .title-font {
-            font-family: 'Playfair Display', serif;
+        .app-container {
+            max-width: 480px;
+            margin: 0 auto;
+            background-color: #f8fafc;
+            min-height: 100vh;
+            box-shadow: 0 0 30px rgba(0,0,0,0.2);
         }
         
-        .gradient-bg {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 25%, #4c1d95 75%, #581c87 100%);
-        }
-        
-        .elegant-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .elegant-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 32px 64px rgba(0, 0, 0, 0.2);
-            background: rgba(255, 255, 255, 0.98);
-        }
-        
-        .floating {
-            animation: elegantFloat 4s ease-in-out infinite;
-        }
-        
-        @keyframes elegantFloat {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(2deg); }
-        }
-        
-        .fade-in {
-            animation: fadeIn 1.2s ease-out;
-        }
-        
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .slide-up {
-            animation: slideUp 1s ease-out;
-        }
-        
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(60px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .elegant-glow {
-            box-shadow: 0 0 40px rgba(168, 85, 247, 0.4);
-            animation: elegantGlow 3s ease-in-out infinite alternate;
-        }
-        
-        @keyframes elegantGlow {
-            from { box-shadow: 0 0 40px rgba(168, 85, 247, 0.4); }
-            to { box-shadow: 0 0 60px rgba(168, 85, 247, 0.6); }
-        }
-        
-        .gradient-text {
-            background: linear-gradient(45deg, #f8fafc, #e2e8f0, #cbd5e1);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: textShimmer 4s ease infinite;
-        }
-        
-        @keyframes textShimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-        }
-        
-        .luxury-button {
-            background: linear-gradient(45deg, #f59e0b, #d97706);
+        .feature-card {
             transition: all 0.3s ease;
-            position: relative;
+            border-radius: 16px;
             overflow: hidden;
         }
         
-        .luxury-button::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            transition: left 0.6s;
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         
-        .luxury-button:hover::before {
-            left: 100%;
+        .icon-container {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
         }
         
-        .luxury-button:hover {
-            background: linear-gradient(45deg, #d97706, #b45309);
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(245, 158, 11, 0.4);
-        }
-        
-        .teal-button {
-            background: linear-gradient(45deg, #0d9488, #0f766e);
-        }
-        
-        .teal-button:hover {
-            background: linear-gradient(45deg, #0f766e, #134e4a);
-            box-shadow: 0 10px 25px rgba(13, 148, 136, 0.4);
-        }
-        
-        .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+        .header-gradient {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
         }
     </style>
 </head>
-<body class="min-h-screen gradient-bg">
-    <!-- Header Section -->
-    <div class="container mx-auto px-6 py-16">
-        <div class="text-center mb-20">
-            <div class="floating mb-12">
-                <div class="elegant-glow rounded-2xl p-6 inline-block">
-                    <svg class="w-24 h-24 mx-auto text-white" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/>
-                        <path d="M6 8h8v2H6V8zm0 3h8v2H6v-2z"/>
-                    </svg>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <div class="header-gradient text-white p-6 rounded-b-3xl shadow-lg">
+            <div class="flex items-center justify-between mb-6">
+                <div class="flex items-center space-x-3">
+                    <div class="bg-white/20 p-2 rounded-xl">
+                        <i class="fas fa-graduation-cap text-2xl"></i>
+                    </div>
+                    <h1 class="text-2xl font-bold">Z-Digital</h1>
+                </div>
+                <div class="flex space-x-3">
+                    <button class="bg-white/20 p-2 rounded-xl">
+                        <i class="fas fa-bell text-xl"></i>
+                    </button>
+                    <button class="bg-white/20 p-2 rounded-xl">
+                        <i class="fas fa-user-circle text-xl"></i>
+                    </button>
                 </div>
             </div>
-            <h1 class="title-font text-6xl md:text-7xl font-bold mb-6 tracking-tight fade-in">
-                <span class="gradient-text">Kelas Digital</span>
-            </h1>
-            <p class="text-2xl text-white/90 mb-3 font-light slide-up">Portal Pembelajaran Modern</p>
-            <p class="text-sm text-white/60 slide-up font-medium tracking-wider">© midarno</p>
+            
+            <div class="text-center mb-4">
+                <p class="text-white/80 text-sm">Selamat datang,</p>
+                <h2 class="text-xl font-semibold">di z-digital</h2>
+            </div>
+            
+            <div class="bg-white/20 rounded-2xl p-4 backdrop-blur-sm">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p class="text-white/80 text-sm">Progress Belajar</p>
+                        <p class="text-2xl font-bold">65%</p>
+                    </div>
+                    <div class="w-16 h-16 rounded-full border-4 border-white/30 flex items-center justify-center">
+                        <span class="text-lg font-bold">12/20</span>
+                    </div>
+                </div>
+            </div>
         </div>
-
+        
         <!-- Main Content -->
-        <div class="max-w-6xl mx-auto">
-            <!-- Introduction Card -->
-            <div class="glass-effect rounded-3xl p-10 mb-16 slide-up elegant-glow">
-                <div class="text-center">
-                    <h2 class="title-font text-3xl font-semibold text-white mb-6">✨ Selamat Datang di Kelas Digital</h2>
-                    <p class="text-white/90 text-xl leading-relaxed font-light max-w-3xl mx-auto">
-                        Jurnal mengaji dan informasi pembelajaran berbasis digital untuk mendukung pengembangan pendidikan.
-                    </p>
-                </div>
+        <div class="p-6">
+            <!-- Fitur Utama -->
+            <h3 class="text-lg font-bold text-gray-800 mb-4">Fitur Belajar</h3>
+            <div class="grid grid-cols-2 gap-4 mb-8">
+                <!-- Jurnal Mengaji -->
+                <a href="https://script.google.com/a/macros/guru.sd.belajar.id/s/AKfycbzonchlz4wPmAq4G5GNMhO6dcmYU3RREQdadVvUsy9TPLrKqMoy_ovsR3b_cIF4OR7Q/exec" class="feature-card bg-white p-4 shadow-md">
+                    <div class="icon-container bg-green-100 mb-3">
+                        <i class="fas fa-book-quran text-green-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-semibold text-gray-800">Jurnal Mengaji</h4>
+                    <p class="text-xs text-gray-500 mt-1">Catatan kemajuan mengaji</p>
+                </a>
+                
+                <!-- Jurnal Kelas -->
+                <a href="https://script.google.com/a/macros/guru.sd.belajar.id/s/AKfycbx36PkYud0ZqmsO1xw1rp7BdbkuzD85xJFf3SdvFN9VyyrOD1oUII6FyJ0X--HmUGbU/exec" class="feature-card bg-white p-4 shadow-md">
+                    <div class="icon-container bg-blue-100 mb-3">
+                        <i class="fas fa-journal-whills text-blue-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-semibold text-gray-800">Jurnal Kelas</h4>
+                    <p class="text-xs text-gray-500 mt-1">Catatan pembelajaran</p>
+                </a>
+                
+                <!-- Video Pembelajaran -->
+                <a href="https://script.google.com/macros/s/AKfycbxLXeMX6AS5iKOWDvzm279-0x00IVEJgyP564shGSGirlTAyyDCDnzdcwIOlJF04VMn/exec" class="feature-card bg-white p-4 shadow-md">
+                    <div class="icon-container bg-purple-100 mb-3">
+                        <i class="fas fa-play-circle text-purple-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-semibold text-gray-800">Video Pembelajaran</h4>
+                    <p class="text-xs text-gray-500 mt-1">Kursus video interaktif</p>
+                </a>
+                
+                <!-- E-Book -->
+                <a href="https://script.google.com/macros/s/AKfycbw0H_IL9C7oBiwevt-4HqIF__fLZtomXLy39pEKFZloy76B74cfKjLUYaP3-3fhn0yS/exec" class="feature-card bg-white p-4 shadow-md">
+                    <div class="icon-container bg-yellow-100 mb-3">
+                        <i class="fas fa-book-open text-yellow-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-semibold text-gray-800">E-Book</h4>
+                    <p class="text-xs text-gray-500 mt-1">Perpustakaan digital</p>
+                </a>
+                
+                <!-- Soal Latihan -->
+                <a href="https://edumind5758.github.io/materi_IPAS_PTS_Kelas6/" class="feature-card bg-white p-4 shadow-md">
+                    <div class="icon-container bg-red-100 mb-3">
+                        <i class="fas fa-clipboard-check text-red-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-semibold text-gray-800">Soal Latihan</h4>
+                    <p class="text-xs text-gray-500 mt-1">Kuis dan ujian online</p>
+                </a>
+                
+                <!-- Chat Kelas -->
+                <a href="https://script.google.com/macros/s/AKfycbxEVj8y5a70WnM262NSK-3nVdMsBQexuHjd-VPTG7BFTI5jD56WkR77JnJexiXqa4OH/exec" class="feature-card bg-white p-4 shadow-md">
+                    <div class="icon-container bg-indigo-100 mb-3">
+                        <i class="fas fa-comments text-indigo-600 text-2xl"></i>
+                    </div>
+                    <h4 class="font-semibold text-gray-800">Chat Kelas</h4>
+                    <p class="text-xs text-gray-500 mt-1">Diskusi dengan teman</p>
+                </a>
             </div>
-
-            <!-- Journal Links Section -->
-            <div class="grid md:grid-cols-2 gap-10 mb-16">
-                <!-- Journal Link 1 -->
-                <div class="elegant-card rounded-3xl p-10 shadow-2xl slide-up">
-                    <div class="text-center">
-                        <div class="w-20 h-20 bg-gradient-to-br from-amber-400 to-orange-500 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-xl">
-                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
-                            </svg>
+            
+            <!-- Fitur Tambahan -->
+            <h3 class="text-lg font-bold text-gray-800 mb-4">Layanan Tambahan</h3>
+            <div class="grid grid-cols-1 gap-4">
+                <!-- Teman Curhat -->
+                <a href="https://script.google.com/macros/s/AKfycbyYCpSO48kd7sYVV2J2vcnvLQHBV63segAq3wHhyU41LG5-XhDfOjCXPdZPqhteseM5mQ/exec" class="feature-card bg-gradient-to-r from-pink-500 to-rose-500 text-white p-4 shadow-lg">
+                    <div class="flex items-center">
+                        <div class="icon-container bg-white/20 mr-4">
+                            <i class="fas fa-heart text-white text-2xl"></i>
                         </div>
-                        <h3 class="title-font text-2xl font-semibold text-gray-800 mb-6">📖 Jurnal Mengaji</h3>
-                        <p class="text-gray-600 mb-8 text-lg leading-relaxed">Akses jurnal mengaji siswa</p>
-                        <a href="https://script.google.com/a/macros/guru.sd.belajar.id/s/AKfycbzonchlz4wPmAq4G5GNMhO6dcmYU3RREQdadVvUsy9TPLrKqMoy_ovsR3b_cIF4OR7Q/exec" 
-                           target="_blank" 
-                           class="luxury-button inline-flex items-center px-10 py-4 text-white font-semibold rounded-2xl shadow-lg">
-                            <span>✨ Buka Jurnal</span>
-                            <svg class="w-5 h-5 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- Journal Link 2 -->
-                <div class="elegant-card rounded-3xl p-10 shadow-2xl slide-up" style="animation-delay: 0.3s;">
-                    <div class="text-center">
-                        <div class="w-20 h-20 bg-gradient-to-br from-teal-400 to-teal-600 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-xl">
-                            <svg class="w-10 h-10 text-white" fill="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                            </svg>
+                        <div class="flex-1">
+                            <h4 class="font-bold text-lg">Teman Curhat</h4>
+                            <p class="text-sm opacity-90">Konseling dan dukungan psikologis</p>
                         </div>
-                        <h3 class="title-font text-2xl font-semibold text-gray-800 mb-6">🎓 Jurnal Pembelajaran</h3>
-                        <p class="text-gray-600 mb-8 text-lg leading-relaxed">Portal khusus untuk guru dengan materi pembelajaran terintegrasi</p>
-                        <a href="https://script.google.com/a/macros/guru.sd.belajar.id/s/AKfycbx36PkYud0ZqmsO1xw1rp7BdbkuzD85xJFf3SdvFN9VyyrOD1oUII6FyJ0X--HmUGbU/exec" 
-                           target="_blank" 
-                           class="teal-button luxury-button inline-flex items-center px-10 py-4 text-white font-semibold rounded-2xl shadow-lg">
-                            <span>🚀 Buka Jurnal</span>
-                            <svg class="w-5 h-5 ml-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-                            </svg>
-                        </a>
+                        <i class="fas fa-arrow-right"></i>
                     </div>
-                </div>
+                </a>
             </div>
-
-            <!-- Features Section -->
-            <div class="glass-effect rounded-3xl p-12">
-                <h3 class="title-font text-3xl font-semibold text-white text-center mb-12">Fitur Pembelajaran</h3>
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
-                            </svg>
+            
+            <!-- Quick Access -->
+            <div class="mt-8 bg-gradient-to-r from-indigo-500 to-purple-600 rounded-2xl p-4 text-white">
+                <h4 class="font-bold mb-2">Akses Cepat</h4>
+                <div class="flex justify-between">
+                    <a href="#" class="text-center">
+                        <div class="bg-white/20 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-1">
+                            <i class="fas fa-calendar-alt"></i>
                         </div>
-                        <h4 class="text-white font-semibold mb-3 text-lg">Materi Terkini</h4>
-                        <p class="text-white/80 leading-relaxed">Jurnal dan artikel pembelajaran terbaru</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                            </svg>
+                        <span class="text-xs">Jadwal</span>
+                    </a>
+                    <a href="#" class="text-center">
+                        <div class="bg-white/20 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-1">
+                            <i class="fas fa-trophy"></i>
                         </div>
-                        <h4 class="text-white font-semibold mb-3 text-lg">Akses Mudah</h4>
-                        <p class="text-white/80 leading-relaxed">Interface yang user-friendly dan responsif</p>
-                    </div>
-                    <div class="text-center">
-                        <div class="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                            <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
-                            </svg>
+                        <span class="text-xs">Prestasi</span>
+                    </a>
+                    <a href="#" class="text-center">
+                        <div class="bg-white/20 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-1">
+                            <i class="fas fa-chart-line"></i>
                         </div>
-                        <h4 class="text-white font-semibold mb-3 text-lg">Pembelajaran Cepat</h4>
-                        <p class="text-white/80 leading-relaxed">Akses instan ke materi pembelajaran</p>
-                    </div>
+                        <span class="text-xs">Progress</span>
+                    </a>
+                    <a href="#" class="text-center">
+                        <div class="bg-white/20 w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-1">
+                            <i class="fas fa-cog"></i>
+                        </div>
+                        <span class="text-xs">Pengaturan</span>
+                    </a>
                 </div>
             </div>
         </div>
-
-        <!-- Footer -->
-        <div class="text-center mt-20">
-            <p class="text-white/50 font-light tracking-wide">Dikembangkan untuk mendukung pendidikan digital Indonesia</p>
+        
+        <!-- Bottom Navigation -->
+        <div class="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 max-w-md mx-auto">
+            <div class="flex justify-around py-3">
+                <a href="#" class="text-center text-indigo-600">
+                    <i class="fas fa-home text-xl"></i>
+                    <p class="text-xs mt-1">Beranda</p>
+                </a>
+                <a href="#" class="text-center text-gray-500">
+                    <i class="fas fa-search text-xl"></i>
+                    <p class="text-xs mt-1">Cari</p>
+                </a>
+                <a href="#" class="text-center text-gray-500">
+                    <i class="fas fa-bookmark text-xl"></i>
+                    <p class="text-xs mt-1">Simpan</p>
+                </a>
+                <a href="#" class="text-center text-gray-500">
+                    <i class="fas fa-user text-xl"></i>
+                    <p class="text-xs mt-1">Profil</p>
+                </a>
+            </div>
         </div>
     </div>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'97d7b35e63b03f63',t:'MTc1NzU5OTMyNC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+    
+    <script>
+        // Simulasi navigasi ke halaman lain
+        document.querySelectorAll('a[href]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                if(this.getAttribute('href') !== '#') {
+                    // Tambahkan animasi loading
+                    document.body.style.opacity = '0.7';
+                    setTimeout(() => {
+                        document.body.style.opacity = '1';
+                    }, 500);
+                } else {
+                    e.preventDefault();
+                    alert('Fitur ini akan segera hadir!');
+                }
+            });
+        });
+    </script>
+</body>
 </html>
